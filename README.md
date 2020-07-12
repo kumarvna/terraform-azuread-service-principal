@@ -1,8 +1,8 @@
 # Service Principal Terraform Module
 
-Terraform Module to create a service principal and assign required built-in roles. The outputs from this module can be used for input in other modules like application id and password.
+Terraform module to create a service principal and assign required built-in roles. The outputs from this module, like application_id and password, can be used as an input in other modules.
 
-To create service principal and assign roles to the resources, this module needed the elevated access in both Azure AD and Azure subscription. Hence, it is not recommended to run from any CI/CD pipelines and advised to run manually to proceed with automated processes.
+To create a service principal and assign roles to the resources, this module needed elevated access in both Azure AD and Azure subscription. Therefore, it is not suggested to run from any CI/CD pipelines and advised to run manually to proceed with automated methods.
 
 ## Module Usage
 
@@ -31,7 +31,7 @@ When you have an app or script that needs to access resources, you can set up an
 * Assign permissions to the app identity that are different than your own permissions. Typically, these permissions are restricted to exactly what the app needs to do.
 * Use a certificate for authentication when executing an unattended script.
 
-This module creates the service principal using certificate. This can be enabled by setting up `enable_service_principal_certificate = true` and provide the valid certificate path using the argument `certificate_path`.
+This module creates the service principal using a certificate. This can be enabled by setting up `enable_service_principal_certificate = true` and provide the valid certificate path using the argument `certificate_path`.
 
 ```hcl
 module "service-principal" {

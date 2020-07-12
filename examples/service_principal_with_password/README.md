@@ -1,6 +1,6 @@
 # Service Principal with password
 
-Terraform Module to create a service principal and assign required built-in roles. The outputs from this module can be used for input in other modules like application id and password.
+Terraform module to create a service principal and assign required built-in roles. The outputs from this module, like application_id and password, can be used as an input in other modules.
 
 ## Module Usage
 

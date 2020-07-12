@@ -53,6 +53,10 @@ module "service-principal" {
 }
 ```
 
+## Password rotation using `time_rotating`
+
+Manages a rotating time resource, which keeps a rotating UTC timestamp stored in the Terraform state and proposes resource recreation when the locally sourced current time is beyond the rotation time. This rotation only occurs when Terraform is executed, meaning there will be drift between the rotation timestamp and actual rotation.
+
 ## Assign the application to a role
 
 To access resources in your subscription, you must assign the application to a role. Decide which role offers the right permissions for the application. To learn about the available roles, see RBAC: [Built in Roles](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles).

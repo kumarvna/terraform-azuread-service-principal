@@ -103,7 +103,7 @@ azurerm | ~> 2.27.0
 
 | Name | Version |
 |------|---------|
-azurerm | ~> 2.27.0
+azurerm | 2.27.0
 random | 2.3.0
 azuread | 0.11.0
 time | 0.5.0

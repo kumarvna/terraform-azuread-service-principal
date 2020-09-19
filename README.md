@@ -9,7 +9,7 @@ To create a service principal and assign roles to the resources, this module nee
 ```hcl
 module "service-principal" {
   source  = "kumarvna/service-principal/azuread"
-  version = "1.0.0"
+  version = "2.0.0"
 
   service_principal_name     = "simple-appaccess"
   password_rotation_in_years = 1
@@ -36,7 +36,7 @@ This module creates the service principal using a certificate. This can be enabl
 ```hcl
 module "service-principal" {
   source  = "kumarvna/service-principal/azuread"
-  version = "1.0.0"
+  version = "2.0.0"
 
   service_principal_name               = "simple-appaccess"
   enable_service_principal_certificate = true
@@ -63,7 +63,7 @@ openssl req -x509 -days 3650 -newkey rsa:2048 -out cert.pem -nodes -subj '/CN=si
 
 This command will create two files: `cert.pem` and `privkey.pem`. The `cert.pem` file contains the X.509 certificate with public key. This certificate will be attached to the Active Directory Application. The `privkey.pem` file contains the RSA private key that will be used to authenticate with Azure Active Directory for the Service Principal.
 
-When self-signed certificates are not sufficient, you sign your certificate using a Third-Party Certificate Authority such as Verisign, GeoTrust, or some other Internal Certificate Authority by generating a certificate signing request (CSR).
+When self-signed certificates are not sufficient, sign your certificate using a Third-Party Certificate Authority such as Verisign, GeoTrust, or some other Internal Certificate Authority by generating a certificate signing request (CSR).
 
 ## Password rotation using `time_rotating`
 
@@ -78,7 +78,7 @@ You can set the scope at the level of the subscription, resource group, or resou
 ```hcl
 module "service-principal" {
   source  = "kumarvna/service-principal/azuread"
-  version = "1.0.0"
+  version = "2.0.0"
   
   # .... omitted
 

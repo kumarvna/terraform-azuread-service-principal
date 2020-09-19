@@ -32,5 +32,5 @@ output "service_principal_password" {
 
 output "service_principal_certificate_id" {
   description = "The Key ID for the Service Principal Certificate"
-  value       = azuread_service_principal_certificate.main.*.id
+  value       = var.enable_service_principal_certificate == true ? azuread_service_principal_certificate.main.*.id : null
 }

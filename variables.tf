@@ -1,5 +1,6 @@
 variable "service_principal_name" {
   description = "The name of the service principal"
+  default     = ""
 }
 
 variable "role_definition_name" {

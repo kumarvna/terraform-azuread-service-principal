@@ -53,6 +53,18 @@ module "service-principal" {
 }
 ```
 
+## Create X.509 Certificate with Asymmetric Keys
+
+To create a self signed SSL certificate, execute the following OpenSSL command, replacing the -days and -subj parameters with the appropriate values:
+
+```sh
+openssl req -x509 -days 3650 -newkey rsa:2048 -out cert.pem -nodes -subj '/CN=simple-appaccess'
+```
+
+This command will create two files: `cert.pem` and `privkey.pem`. The `cert.pem` file contains the X.509 certificate with public key. This certificate will be attached to the Active Directory Application. The `privkey.pem` file contains the RSA private key that will be used to authenticate with Azure Active Directory for the Service Principal.
+
+When self-signed certificates are not sufficient, you sign your certificate using a Third-Party Certificate Authority such as Verisign, GeoTrust, or some other Internal Certificate Authority by generating a certificate signing request (CSR).
+
 ## Password rotation using `time_rotating`
 
 Manages a rotating time resource, which keeps a rotating UTC timestamp stored in the Terraform state and proposes resource recreation when the locally sourced current time is beyond the rotation time. This rotation only occurs when Terraform is executed, meaning there will be drift between the rotation timestamp and actual rotation.

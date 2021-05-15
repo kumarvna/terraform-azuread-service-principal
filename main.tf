@@ -1,5 +1,5 @@
 resource "azuread_application" "main" {
-  name                       = var.service_principal_name
+  display_name               = var.service_principal_name
   identifier_uris            = ["http://${var.service_principal_name}"]
   available_to_other_tenants = false
   oauth2_allow_implicit_flow = false

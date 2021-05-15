@@ -7,7 +7,7 @@ Terraform module to create a service principal and assign required built-in role
 ```hcl
 module "service-principal" {
   source  = "kumarvna/service-principal/azuread"
-  version = "2.0.0"
+  version = "2.1.0"
 
   service_principal_name               = "simple-appaccess"
   enable_service_principal_certificate = true

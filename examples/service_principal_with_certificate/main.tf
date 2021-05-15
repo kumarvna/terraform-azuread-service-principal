@@ -1,6 +1,7 @@
 module "service-principal" {
-  source  = "kumarvna/service-principal/azuread"
-  version = "2.0.0"
+  //  source  = "kumarvna/service-principal/azuread"
+  //  version = "2.1.0"
+  source = "../../"
 
   service_principal_name               = "simple-appaccess"
   enable_service_principal_certificate = true

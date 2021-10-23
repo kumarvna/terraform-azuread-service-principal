@@ -82,3 +82,4 @@ variable "assignments" {
   }))
   default = []
 }
+

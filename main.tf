@@ -40,7 +40,7 @@ resource "azuread_service_principal_certificate" "main" {
   type                 = var.certificate_type
   encoding             = var.certificate_encoding
   key_id               = var.key_id
-  value                = filebase64(var.certificate_path)
+  value                = file(var.certificate_path)
   end_date             = time_rotating.main.id
 }
 

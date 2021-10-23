@@ -67,6 +67,8 @@ module "service-principal" {
 > If you are using Client Certificate authentication, it's now possible to specify the certificate bundle data as an inline variable, in addition to the pre-existing method of specifying the filesystem path for a .pfx file. This may be useful when running Terraform in a non-interactive context, such as CI/CD pipelines.
 > This can be enabled by replacing existing encoding value with argument `certificate_encoding = "base64"` and provide a valid .pfx certificate path using the argument `certificate_path`.
 
+> The `hex` encoding option (`certificate_encoding = "hex"`) is useful for consuming certificate data from the `azurerm_key_vault_certificate` resource.
+
 ## Create X.509 Certificate with Asymmetric Keys
 
 To create a self signed SSL certificate, execute the following OpenSSL command, replacing the -days and -subj parameters with the appropriate values:

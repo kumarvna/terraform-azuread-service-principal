@@ -30,3 +30,4 @@ override.tf.json
 # example: *tfplan*
 examples/service_principal_with_certificate/cert.key
 examples/service_principal_with_certificate/cert.pem
+examples/service_principal_with_certificate/privkey.pem

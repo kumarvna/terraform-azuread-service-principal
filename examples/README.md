@@ -1,15 +1,21 @@
 # Service Principal Terraform Module
 
-Terraform module to create a service principal and assign required built-in roles. The outputs from this module, like application_id and password, can be used as an input in other modules.
+Terraform module to create a service principal with password or certificate and assign required built-in roles. The outputs from this module, like application_id and password, can be used as an input in other modules.
 
 ## Module Usage
 
 ### Service Principal with password
 
 ```hcl
+# Azurerm provider configuration
+provider "azurerm" {
+  features {}
+}
+
 module "service-principal" {
   source  = "kumarvna/service-principal/azuread"
-  version = "2.1.0"
+  version = "2.2.0"
+
 
   service_principal_name     = "simple-appaccess"
   password_rotation_in_years = 1
@@ -27,9 +33,14 @@ module "service-principal" {
 ### Service Principal with certificate
 
 ```hcl
+# Azurerm provider configuration
+provider "azurerm" {
+  features {}
+}
+
 module "service-principal" {
   source  = "kumarvna/service-principal/azuread"
-  version = "2.1.0"
+  version = "2.2.0"
 
   service_principal_name               = "simple-appaccess"
   enable_service_principal_certificate = true
@@ -68,4 +79,3 @@ Run `terraform destroy` when you don't need these resources.
 `client_id`|The application id of AzureAD application created
 `client_secret`|Password for service principal
 `service_principal_password`|Password for service principal
-`service_principal_certificate_id`|The Key ID for the Service Principal Certificate

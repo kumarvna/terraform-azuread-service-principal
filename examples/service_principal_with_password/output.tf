@@ -29,8 +29,3 @@ output "service_principal_password" {
   value       = module.service-principal.service_principal_password
   sensitive   = true
 }
-
-output "service_principal_certificate_id" {
-  description = "The Key ID for the Service Principal Certificate"
-  value       = module.service-principal.service_principal_certificate_id
-}

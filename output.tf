@@ -30,7 +30,3 @@ output "service_principal_password" {
   sensitive   = true
 }
 
-output "service_principal_certificate_id" {
-  description = "The Key ID for the Service Principal Certificate"
-  value       = var.enable_service_principal_certificate == true ? azuread_service_principal_certificate.main.*.id : null
-}

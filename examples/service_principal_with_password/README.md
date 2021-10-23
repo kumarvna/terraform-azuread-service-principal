@@ -5,9 +5,15 @@ Terraform module to create a service principal and assign required built-in role
 ## Module Usage
 
 ```hcl
+# Azurerm provider configuration
+provider "azurerm" {
+  features {}
+}
+
 module "service-principal" {
   source  = "kumarvna/service-principal/azuread"
-  version = "2.1.0"
+  version = "2.2.0"
+
 
   service_principal_name     = "simple-appaccess"
   password_rotation_in_years = 1

@@ -1,13 +1,18 @@
 # Service Principal with certificate
 
-Terraform module to create a service principal and assign required built-in roles. The outputs from this module, like application_id and password, can be used as an input in other modules.
+Terraform module to create a service principal with certificate and assign required built-in roles. The outputs from this module, like application_id and password, can be used as an input in other modules.
 
 ## Module Usage
 
 ```hcl
+# Azurerm provider configuration
+provider "azurerm" {
+  features {}
+}
+
 module "service-principal" {
   source  = "kumarvna/service-principal/azuread"
-  version = "2.1.0"
+  version = "2.2.0"
 
   service_principal_name               = "simple-appaccess"
   enable_service_principal_certificate = true

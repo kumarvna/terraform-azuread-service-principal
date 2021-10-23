@@ -45,7 +45,7 @@ variable "enable_service_principal_certificate" {
 }
 
 variable "certificate_encoding" {
-  description = " Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`"
+  description = "Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`"
   default     = "pem"
 }
 

@@ -31,3 +31,4 @@ override.tf.json
 examples/service_principal_with_certificate/cert.key
 examples/service_principal_with_certificate/cert.pem
 examples/service_principal_with_certificate/privkey.pem
+examples/service_principal_with_certificate/keyBag.pfx

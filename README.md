@@ -39,8 +39,6 @@ When you have an app or script that needs to access resources, you can set up an
 
 This module creates the service principal using a certificate. This can be enabled by setting up `enable_service_principal_certificate = true` and provide the valid certificate path using the argument `certificate_path`.
 
-> If you are using Client Certificate authentication, it's now possible to specify the certificate bundle data as an inline variable, in addition to the pre-existing method of specifying the filesystem path for a .pfx file. This may be useful when running Terraform in a non-interactive context, such as CI/CD pipelines.
-
 ```hcl
 # Azurerm provider configuration
 provider "azurerm" {
@@ -65,6 +63,9 @@ module "service-principal" {
   ]
 }
 ```
+
+> If you are using Client Certificate authentication, it's now possible to specify the certificate bundle data as an inline variable, in addition to the pre-existing method of specifying the filesystem path for a .pfx file. This may be useful when running Terraform in a non-interactive context, such as CI/CD pipelines.
+> This can be enabled by replacing existing encoding value with argument `certificate_encoding = "base64"` and provide a valid .pfx certificate path using the argument `certificate_path`.
 
 ## Create X.509 Certificate with Asymmetric Keys
 
@@ -129,13 +130,21 @@ time | >= 0.7.1
 Name | Description | Type | Default
 ---- | ----------- | ---- | -------
 `service_principal_name` | The name of the service principal| string | `""`
+`sign_in_audience`|The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`|string|`"AzureADMyOrg"`
+`alternative_names`|A set of alternative names, used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities|list(string)|`[]`
+`description`|A description of the service principal provided for internal end-users|string|`null`
 `role_definition_name`|The name of a Azure built-in Role for the service principal|string|`""`
 `password_end_date`|The relative duration or RFC3339 rotation timestamp after which the password expire|string|`""`
 `password_rotation_in_years`|Number of years to add to the base timestamp to configure the password rotation timestamp. Conflicts with password_end_date and either one is specified and not the both|string|`null`
-`assignments`|The list of role assignments to this service principal|list|`[]`
+`password_rotation_in_days`|Number of days to add to the base timestamp to configure the rotation timestamp. When the current time has passed the rotation timestamp, the resource will trigger recreation.Conflicts with `password_end_date`, `password_rotation_in_years` and either one must be specified, not all"|string|`null`
 `enable_service_principal_certificate`|Manages a Certificate associated with a Service Principal within Azure Active Directory|string|`false`
+`certificate_encoding`|Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`|striing|`pem`
+`key_id`|A UUID used to uniquely identify this certificate. If not specified a UUID will be automatically generated|string|`null`
 `certificate_type`|The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`|string|`AsymmetricX509Cert`
 `certificate_path`|The path to the certificate for this Service Principal|string|`""`
+`azure_role_name`|A unique UUID/GUID for this Role Assignment - one will be generated if not specified|string|`null`
+`azure_role_description`|The description for this Role Assignment|string|`null`
+`assignments`|The list of role assignments to this service principal|list|`[]`
 
 ## Outputs
 
@@ -147,7 +156,6 @@ Name | Description | Type | Default
 `client_id`|The application id of AzureAD application created
 `client_secret`|Password for service principal
 `service_principal_password`|Password for service principal
-`service_principal_certificate_id`|The Key ID for the Service Principal Certificate
 
 ## Resource Graph
 

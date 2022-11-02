@@ -12,7 +12,7 @@ provider "azurerm" {
 
 module "service-principal" {
   source  = "kumarvna/service-principal/azuread"
-  version = "2.2.0"
+  version = "2.3.0"
 
   service_principal_name               = "simple-appaccess"
   enable_service_principal_certificate = true
@@ -39,7 +39,7 @@ provider "azurerm" {
 
 module "service-principal" {
   source  = "kumarvna/service-principal/azuread"
-  version = "2.2.0"
+  version = "2.3.0"
 
   service_principal_name               = "simple-appaccess"
   enable_service_principal_certificate = true

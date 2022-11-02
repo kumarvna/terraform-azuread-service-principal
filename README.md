@@ -14,7 +14,7 @@ provider "azurerm" {
 
 module "service-principal" {
   source  = "kumarvna/service-principal/azuread"
-  version = "2.2.0"
+  version = "2.3.0"
 
 
   service_principal_name     = "simple-appaccess"
@@ -47,7 +47,7 @@ provider "azurerm" {
 
 module "service-principal" {
   source  = "kumarvna/service-principal/azuread"
-  version = "2.2.0"
+  version = "2.3.0"
 
   service_principal_name               = "simple-appaccess"
   enable_service_principal_certificate = true
@@ -97,7 +97,7 @@ You can set the scope at the level of the subscription, resource group, or resou
 ```hcl
 module "service-principal" {
   source  = "kumarvna/service-principal/azuread"
-  version = "2.2.0"
+  version = "2.3.0"
   
   # .... omitted
 
@@ -115,16 +115,16 @@ module "service-principal" {
 
 Name | Version
 -----|--------
-terraform | >= 0.13
-azurerm | >= 2.59.0
+terraform | >= 1.1.9
+azurerm | >= 3.28.0
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-azurerm | >= 2.59.0
+azurerm | >= 3.28.0
 random | >= 3.1.0
-azuread | >= 2.7.0
+azuread | >= 2.30.0
 time | >= 0.7.1
 
 ## Inputs
